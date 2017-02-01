@@ -1,0 +1,1004 @@
+  --replIndexPrefetch arg               specify index prefetching behavior (if
+                                        secondary) [none|_id_only|all]
+  --enableMajorityReadConcern           enables majority readConcern
+
+Sharding options:
+  --configsvr                           declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            declare this is a shard db of a
+                                        cluster; default port 27018
+
+SSL options:
+  --sslOnNormalPorts                    use ssl on configured ports
+  --sslMode arg                         set the SSL operation mode
+                                        (disabled|allowSSL|preferSSL|requireSSL
+                                                             rg                   PEM file for ssl
+  --sslPEMKeyPassword arg               PEM file password
+  --sslClusterFile arg                  Key file for internal SSL
+                                        authentication
+  --sslClusterPassword arg              Internal authentication key file
+                                        password
+  --sslCAFile arg                       Certificate Authority file for SSL
+  --sslCRLFile arg                      Certificate Revocation List file for
+                                        SSL
+  --sslDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2]
+  --sslWeakCertificateValidation        allow client to connect without
+                                        presenting a certificate
+  --sslAllowConnectionsWithoutCertificates
+                                        allow client to connect without
+                                        presenting a certificate
+  --sslAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --sslAllowInvalidCertificates         allow connections to servers with
+                                        invalid certificates
+  --sslFIPSMode                         activate FIPS 140-2 mode at startup
+
+Storage options:
+  --storageEngine arg                   what storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          directory for datafiles - defaults to
+                                        /data/db
+  --directoryperdb                      each database will be stored in a
+                                        separate directory
+  --noprealloc                          disable data file preallocation - will
+                                        often hurt performance
+  --nssize arg (=16)                    .ns file size (in MB) for new databases
+  --quota                               limits each database to a certain
+                                        number of files (8 default)
+  --quotaFiles arg                      number of files allowed per db, implies
+                                        --quota
+  --smallfiles                          use a smaller default file size
+  --syncdelay arg (=60)                 seconds between disk syncs (0=never,
+                                        but not recommended)
+  --upgrade                             upgrade db if needed
+  --repair                              run repair on all dbs
+  --repairpath arg                      root directory for repair files -
+                                        defaults to dbpath
+  --journal                             enable journaling
+  --nojournal                           disable journaling (journaling is on by
+                                        default for 64 bit)
+  --journalOptions arg                  journal diagnostic options
+  --journalCommitInterval arg           how often to group/batch commit (ms)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           maximum amount of memory to allocate
+                                        for cache; defaults to 1/2 of physical
+                                        RAM
+  --wiredTigerStatisticsLogDelaySecs arg (=0)
+                                        seconds to wait between each write to a
+                                        statistics file in the dbpath; 0 means
+                                        do not log statistics
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        use a compressor for log records
+                                        [none|snappy|zlib]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        block compression algorithm for
+                                        collection data [none|snappy|zlib]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        use prefix compression on row-store
+                                        leaf pages
+
+➜  data ./mongod database
+zsh: no such file or directory: ./mongod
+➜  data mongod
+2017-02-01T08:33:00.158+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43804 port=27017 dbpath=/data/db 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:33:00.159+0100 I CONTROL  [initandlisten] options: {}
+2017-02-01T08:33:00.160+0100 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/db not found., terminating
+2017-02-01T08:33:00.160+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:33:00.160+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:33:00.160+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:33:00.160+0100 I CONTROL  [initandlisten] shutting down with code:100
+➜  data ls
+➜  data mkdir db
+➜  data mongod
+2017-02-01T08:34:53.195+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43831 port=27017 dbpath=/data/db 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] options: {}
+2017-02-01T08:34:53.196+0100 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/db not found., terminating
+2017-02-01T08:34:53.196+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:34:53.196+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:34:53.196+0100 I CONTROL  [initandlisten] shutting down with code:100
+➜  data mongod ./
+Invalid command: ./
+Options:
+
+General options:
+  -h [ --help ]                         show this usage information
+  --version                             show version information
+  -f [ --config ] arg                   configuration file specifying
+                                        additional options
+  -v [ --verbose ] [=arg(=v)]           be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               quieter output
+  --port arg                            specify port number - 27017 by default
+  --bind_ip arg                         comma separated list of ip addresses to
+                                        listen on - all local ips by default
+  --ipv6                                enable IPv6 support (disabled by
+                                        default)
+  --maxConns arg                        max number of simultaneous connections
+                                        - 1000000 by default
+  --logpath arg                         log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --syslog                              log to system's syslog facility instead
+                                        of file or stdout
+  --syslogFacility arg                  syslog facility used for mongodb syslog
+                                        message
+  --logappend                           append to logpath instead of
+                                        over-writing
+  --logRotate arg                       set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of ctime, iso8601-utc or
+                                        iso8601-local
+  --pidfilepath arg                     full path to pidfile (if not set, no
+                                        pidfile is created)
+  --keyFile arg                         private key for cluster authentication
+  --noauth                              run without security
+  --setParameter arg                    Set a configurable parameter
+  --httpinterface                       enable http interface
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+  --nounixsocket                        disable listening on unix sockets
+  --unixSocketPrefix arg                alternative directory for UNIX domain
+                                        sockets (defaults to /tmp)
+  --filePermissions arg                 permissions to set on UNIX domain
+                                        socket file - 0700 by default
+  --fork                                fork server process
+  --networkMessageCompressors arg       Comma-separated list of compressors to
+                                        use for network messages
+  --auth                                run with security
+  --jsonp                               allow JSONP access via http (has
+                                        security implications)
+  --rest                                turn on simple rest api
+  --slowms arg (=100)                   value of slow for profile and console
+                                        log
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             print some diagnostic system
+                                        information
+  --noIndexBuildRetry                   don't retry any index builds that were
+                                        interrupted by shutdown
+  --noscripting                         disable scripting engine
+  --notablescan                         do not allow table scans
+
+Replication options:
+  --oplogSize arg                       size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Master/slave options (old; use replica sets instead):
+  --master                              master mode
+  --slave                               slave mode
+  --source arg                          when slave: specify master as
+                                        <server:port>
+  --only arg                            when slave: specify a single database
+                                        to replicate
+  --slavedelay arg                      specify delay (in seconds) to be used
+                                        when applying master ops to slave
+  --autoresync                          automatically resync if slave data is
+                                        stale
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --replIndexPrefetch arg               specify index prefetching behavior (if
+                                        secondary) [none|_id_only|all]
+  --enableMajorityReadConcern           enables majority readConcern
+
+Sharding options:
+  --configsvr                           declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            declare this is a shard db of a
+                                        cluster; default port 27018
+
+SSL options:
+  --sslOnNormalPorts                    use ssl on configured ports
+  --sslMode arg                         set the SSL operation mode
+                                        (disabled|allowSSL|preferSSL|requireSSL
+                                        )
+  --sslPEMKeyFile arg                   PEM file for ssl
+  --sslPEMKeyPassword arg               PEM file password
+  --sslClusterFile arg                  Key file for internal SSL
+                                        authentication
+  --sslClusterPassword arg              Internal authentication key file
+                                        password
+  --sslCAFile arg                       Certificate Authority file for SSL
+  --sslCRLFile arg                      Certificate Revocation List file for
+                                        SSL
+  --sslDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2]
+  --sslWeakCertificateValidation        allow client to connect without
+                                        presenting a certificate
+  --sslAllowConnectionsWithoutCertificates
+                                        allow client to connect without
+                                        presenting a certificate
+  --sslAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --sslAllowInvalidCertificates         allow connections to servers with
+                                        invalid certificates
+  --sslFIPSMode                         activate FIPS 140-2 mode at startup
+
+Storage options:
+  --storageEngine arg                   what storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          directory for datafiles - defaults to
+                                        /data/db
+  --directoryperdb                      each database will be stored in a
+                                        separate directory
+  --noprealloc                          disable data file preallocation - will
+                                        often hurt performance
+  --nssize arg (=16)                    .ns file size (in MB) for new databases
+  --quota                               limits each database to a certain
+                                        number of files (8 default)
+  --quotaFiles arg                      number of files allowed per db, implies
+                                        --quota
+  --smallfiles                          use a smaller default file size
+  --syncdelay arg (=60)                 seconds between disk syncs (0=never,
+                                        but not recommended)
+  --upgrade                             upgrade db if needed
+  --repair                              run repair on all dbs
+  --repairpath arg                      root directory for repair files -
+                                        defaults to dbpath
+  --journal                             enable journaling
+  --nojournal                           disable journaling (journaling is on by
+                                        default for 64 bit)
+  --journalOptions arg                  journal diagnostic options
+  --journalCommitInterval arg           how often to group/batch commit (ms)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           maximum amount of memory to allocate
+                                        for cache; defaults to 1/2 of physical
+                                        RAM
+  --wiredTigerStatisticsLogDelaySecs arg (=0)
+                                        seconds to wait between each write to a
+                                        statistics file in the dbpath; 0 means
+                                        do not log statistics
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        use a compressor for log records
+                                        [none|snappy|zlib]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        block compression algorithm for
+                                        collection data [none|snappy|zlib]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        use prefix compression on row-store
+                                        leaf pages
+
+➜  data ./mongodb
+zsh: no such file or directory: ./mongodb
+➜  data mongod --dbpath /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+2017-02-01T08:38:50.852+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43874 port=27017 dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:38:50.853+0100 I CONTROL  [initandlisten] options: { storage: { dbPath: "/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/" } }
+2017-02-01T08:38:50.853+0100 E NETWORK  [initandlisten] listen(): bind() failed Address already in use for socket: 0.0.0.0:27017
+2017-02-01T08:38:50.853+0100 E NETWORK  [initandlisten]   addr already in use
+2017-02-01T08:38:50.853+0100 E NETWORK  [initandlisten] Failed to set up sockets during startup.
+2017-02-01T08:38:50.853+0100 E STORAGE  [initandlisten] Failed to set up listener: InternalError: Failed to set up sockets
+2017-02-01T08:38:50.853+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:38:50.854+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:38:50.854+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:38:50.854+0100 I CONTROL  [initandlisten] shutting down with code:48
+➜  data mongod --dbpath /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+2017-02-01T08:39:35.891+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43884 port=27017 dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:39:35.891+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:39:35.891+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:39:35.891+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:39:35.891+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten] options: { storage: { dbPath: "/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/" } }
+2017-02-01T08:39:35.892+0100 E NETWORK  [initandlisten] listen(): bind() failed Address already in use for socket: 0.0.0.0:27017
+2017-02-01T08:39:35.892+0100 E NETWORK  [initandlisten]   addr already in use
+2017-02-01T08:39:35.892+0100 E NETWORK  [initandlisten] Failed to set up sockets during startup.
+2017-02-01T08:39:35.892+0100 E STORAGE  [initandlisten] Failed to set up listener: InternalError: Failed to set up sockets
+2017-02-01T08:39:35.892+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:39:35.892+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:39:35.892+0100 I CONTROL  [initandlisten] shutting down with code:48
+➜  data top
+➜  data mongod --shutdown
+Error parsing command line: unrecognised option '--shutdown'
+try 'mongod --help' for more information
+➜  data mongod --help
+Options:
+
+General options:
+  -h [ --help ]                         show this usage information
+  --version                             show version information
+  -f [ --config ] arg                   configuration file specifying
+                                        additional options
+  -v [ --verbose ] [=arg(=v)]           be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               quieter output
+  --port arg                            specify port number - 27017 by default
+  --bind_ip arg                         comma separated list of ip addresses to
+                                        listen on - all local ips by default
+  --ipv6                                enable IPv6 support (disabled by
+                                        default)
+  --maxConns arg                        max number of simultaneous connections
+                                        - 1000000 by default
+  --logpath arg                         log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --syslog                              log to system's syslog facility instead
+                                        of file or stdout
+  --syslogFacility arg                  syslog facility used for mongodb syslog
+                                        message
+  --logappend                           append to logpath instead of
+                                        over-writing
+  --logRotate arg                       set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of ctime, iso8601-utc or
+                                        iso8601-local
+  --pidfilepath arg                     full path to pidfile (if not set, no
+                                        pidfile is created)
+  --keyFile arg                         private key for cluster authentication
+  --noauth                              run without security
+  --setParameter arg                    Set a configurable parameter
+  --httpinterface                       enable http interface
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+  --nounixsocket                        disable listening on unix sockets
+  --unixSocketPrefix arg                alternative directory for UNIX domain
+                                        sockets (defaults to /tmp)
+  --filePermissions arg                 permissions to set on UNIX domain
+                                        socket file - 0700 by default
+  --fork                                fork server process
+  --networkMessageCompressors arg       Comma-separated list of compressors to
+                                        use for network messages
+  --auth                                run with security
+  --jsonp                               allow JSONP access via http (has
+                                        security implications)
+  --rest                                turn on simple rest api
+  --slowms arg (=100)                   value of slow for profile and console
+                                        log
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             print some diagnostic system
+                                        information
+  --noIndexBuildRetry                   don't retry any index builds that were
+                                        interrupted by shutdown
+  --noscripting                         disable scripting engine
+  --notablescan                         do not allow table scans
+
+Replication options:
+  --oplogSize arg                       size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Master/slave options (old; use replica sets instead):
+  --master                              master mode
+  --slave                               slave mode
+  --source arg                          when slave: specify master as
+                                        <server:port>
+  --only arg                            when slave: specify a single database
+                                        to replicate
+  --slavedelay arg                      specify delay (in seconds) to be used
+                                        when applying master ops to slave
+  --autoresync                          automatically resync if slave data is
+                                        stale
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --replIndexPrefetch arg               specify index prefetching behavior (if
+                                        secondary) [none|_id_only|all]
+  --enableMajorityReadConcern           enables majority readConcern
+
+Sharding options:
+  --configsvr                           declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            declare this is a shard db of a
+                                        cluster; default port 27018
+
+SSL options:
+  --sslOnNormalPorts                    use ssl on configured ports
+  --sslMode arg                         set the SSL operation mode
+                                        (disabled|allowSSL|preferSSL|requireSSL
+                                        )
+  --sslPEMKeyFile arg                   PEM file for ssl
+  --sslPEMKeyPassword arg               PEM file password
+  --sslClusterFile arg                  Key file for internal SSL
+                                        authentication
+  --sslClusterPassword arg              Internal authentication key file
+                                        password
+  --sslCAFile arg                       Certificate Authority file for SSL
+  --sslCRLFile arg                      Certificate Revocation List file for
+                                        SSL
+  --sslDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2]
+  --sslWeakCertificateValidation        allow client to connect without
+                                        presenting a certificate
+  --sslAllowConnectionsWithoutCertificates
+                                        allow client to connect without
+                                        presenting a certificate
+  --sslAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --sslAllowInvalidCertificates         allow connections to servers with
+                                        invalid certificates
+  --sslFIPSMode                         activate FIPS 140-2 mode at startup
+
+Storage options:
+  --storageEngine arg                   what storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          directory for datafiles - defaults to
+                                        /data/db
+  --directoryperdb                      each database will be stored in a
+                                        separate directory
+  --noprealloc                          disable data file preallocation - will
+                                        often hurt performance
+  --nssize arg (=16)                    .ns file size (in MB) for new databases
+  --quota                               limits each database to a certain
+                                        number of files (8 default)
+  --quotaFiles arg                      number of files allowed per db, implies
+                                        --quota
+  --smallfiles                          use a smaller default file size
+  --syncdelay arg (=60)                 seconds between disk syncs (0=never,
+                                        but not recommended)
+  --upgrade                             upgrade db if needed
+  --repair                              run repair on all dbs
+  --repairpath arg                      root directory for repair files -
+                                        defaults to dbpath
+  --journal                             enable journaling
+  --nojournal                           disable journaling (journaling is on by
+                                        default for 64 bit)
+  --journalOptions arg                  journal diagnostic options
+  --journalCommitInterval arg           how often to group/batch commit (ms)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           maximum amount of memory to allocate
+                                        for cache; defaults to 1/2 of physical
+                                        RAM
+  --wiredTigerStatisticsLogDelaySecs arg (=0)
+                                        seconds to wait between each write to a
+                                        statistics file in the dbpath; 0 means
+                                        do not log statistics
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        use a compressor for log records
+                                        [none|snappy|zlib]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        block compression algorithm for
+                                        collection data [none|snappy|zlib]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        use prefix compression on row-store
+                                        leaf pages
+
+➜  data mongod --help
+Options:
+
+General options:
+  -h [ --help ]                         show this usage information
+  --version                             show version information
+  -f [ --config ] arg                   configuration file specifying
+                                        additional options
+  -v [ --verbose ] [=arg(=v)]           be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               quieter output
+  --port arg                            specify port number - 27017 by default
+  --bind_ip arg                         comma separated list of ip addresses to
+                                        listen on - all local ips by default
+  --ipv6                                enable IPv6 support (disabled by
+                                        default)
+  --maxConns arg                        max number of simultaneous connections
+                                        - 1000000 by default
+  --logpath arg                         log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --syslog                              log to system's syslog facility instead
+                                        of file or stdout
+  --syslogFacility arg                  syslog facility used for mongodb syslog
+                                        message
+  --logappend                           append to logpath instead of
+                                        over-writing
+  --logRotate arg                       set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of ctime, iso8601-utc or
+                                        iso8601-local
+  --pidfilepath arg                     full path to pidfile (if not set, no
+                                        pidfile is created)
+  --keyFile arg                         private key for cluster authentication
+  --noauth                              run without security
+  --setParameter arg                    Set a configurable parameter
+  --httpinterface                       enable http interface
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+  --nounixsocket                        disable listening on unix sockets
+  --unixSocketPrefix arg                alternative directory for UNIX domain
+                                        sockets (defaults to /tmp)
+  --filePermissions arg                 permissions to set on UNIX domain
+                                        socket file - 0700 by default
+  --fork                                fork server process
+  --networkMessageCompressors arg       Comma-separated list of compressors to
+                                        use for network messages
+  --auth                                run with security
+  --jsonp                               allow JSONP access via http (has
+                                        security implications)
+  --rest                                turn on simple rest api
+  --slowms arg (=100)                   value of slow for profile and console
+                                        log
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             print some diagnostic system
+                                        information
+  --noIndexBuildRetry                   don't retry any index builds that were
+                                        interrupted by shutdown
+  --noscripting                         disable scripting engine
+  --notablescan                         do not allow table scans
+
+Replication options:
+  --oplogSize arg                       size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Master/slave options (old; use replica sets instead):
+  --master                              master mode
+  --slave                               slave mode
+  --source arg                          when slave: specify master as
+                                        <server:port>
+  --only arg                            when slave: specify a single database
+                                        to replicate
+  --slavedelay arg                      specify delay (in seconds) to be used
+                                        when applying master ops to slave
+  --autoresync                          automatically resync if slave data is
+                                        stale
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --replIndexPrefetch arg               specify index prefetching behavior (if
+                                        secondary) [none|_id_only|all]
+  --enableMajorityReadConcern           enables majority readConcern
+
+Sharding options:
+  --configsvr                           declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            declare this is a shard db of a
+                                        cluster; default port 27018
+
+SSL options:
+  --sslOnNormalPorts                    use ssl on configured ports
+  --sslMode arg                         set the SSL operation mode
+                                        (disabled|allowSSL|preferSSL|requireSSL
+                                        )
+  --sslPEMKeyFile arg                   PEM file for ssl
+  --sslPEMKeyPassword arg               PEM file password
+  --sslClusterFile arg                  Key file for internal SSL
+                                        authentication
+  --sslClusterPassword arg              Internal authentication key file
+                                        password
+  --sslCAFile arg                       Certificate Authority file for SSL
+  --sslCRLFile arg                      Certificate Revocation List file for
+                                        SSL
+  --sslDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2]
+  --sslWeakCertificateValidation        allow client to connect without
+                                        presenting a certificate
+  --sslAllowConnectionsWithoutCertificates
+                                        allow client to connect without
+                                        presenting a certificate
+  --sslAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --sslAllowInvalidCertificates         allow connections to servers with
+                                        invalid certificates
+  --sslFIPSMode                         activate FIPS 140-2 mode at startup
+
+Storage options:
+  --storageEngine arg                   what storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          directory for datafiles - defaults to
+                                        /data/db
+  --directoryperdb                      each database will be stored in a
+                                        separate directory
+  --noprealloc                          disable data file preallocation - will
+                                        often hurt performance
+  --nssize arg (=16)                    .ns file size (in MB) for new databases
+  --quota                               limits each database to a certain
+                                        number of files (8 default)
+  --quotaFiles arg                      number of files allowed per db, implies
+                                        --quota
+  --smallfiles                          use a smaller default file size
+  --syncdelay arg (=60)                 seconds between disk syncs (0=never,
+                                        but not recommended)
+  --upgrade                             upgrade db if needed
+  --repair                              run repair on all dbs
+  --repairpath arg                      root directory for repair files -
+                                        defaults to dbpath
+  --journal                             enable journaling
+  --nojournal                           disable journaling (journaling is on by
+                                        default for 64 bit)
+  --journalOptions arg                  journal diagnostic options
+  --journalCommitInterval arg           how often to group/batch commit (ms)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           maximum amount of memory to allocate
+                                        for cache; defaults to 1/2 of physical
+                                        RAM
+  --wiredTigerStatisticsLogDelaySecs arg (=0)
+                                        seconds to wait between each write to a
+                                        statistics file in the dbpath; 0 means
+                                        do not log statistics
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        use a compressor for log records
+                                        [none|snappy|zlib]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        block compression algorithm for
+                                        collection data [none|snappy|zlib]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        use prefix compression on row-store
+                                        leaf pages
+
+➜  data mongod
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43938 port=27017 dbpath=/data/db 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:42:32.175+0100 I CONTROL  [initandlisten] options: {}
+2017-02-01T08:42:32.176+0100 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /data/db not found., terminating
+2017-02-01T08:42:32.176+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:42:32.176+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:42:32.176+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:42:32.176+0100 I CONTROL  [initandlisten] shutting down with code:100
+➜  data mongod /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+Invalid command: /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+Options:
+
+General options:
+  -h [ --help ]                         show this usage information
+  --version                             show version information
+  -f [ --config ] arg                   configuration file specifying
+                                        additional options
+  -v [ --verbose ] [=arg(=v)]           be more verbose (include multiple times
+                                        for more verbosity e.g. -vvvvv)
+  --quiet                               quieter output
+  --port arg                            specify port number - 27017 by default
+  --bind_ip arg                         comma separated list of ip addresses to
+                                        listen on - all local ips by default
+  --ipv6                                enable IPv6 support (disabled by
+                                        default)
+  --maxConns arg                        max number of simultaneous connections
+                                        - 1000000 by default
+  --logpath arg                         log file to send write to instead of
+                                        stdout - has to be a file, not
+                                        directory
+  --syslog                              log to system's syslog facility instead
+                                        of file or stdout
+  --syslogFacility arg                  syslog facility used for mongodb syslog
+                                        message
+  --logappend                           append to logpath instead of
+                                        over-writing
+  --logRotate arg                       set the log rotation behavior
+                                        (rename|reopen)
+  --timeStampFormat arg                 Desired format for timestamps in log
+                                        messages. One of ctime, iso8601-utc or
+                                        iso8601-local
+  --pidfilepath arg                     full path to pidfile (if not set, no
+                                        pidfile is created)
+  --keyFile arg                         private key for cluster authentication
+  --noauth                              run without security
+  --setParameter arg                    Set a configurable parameter
+  --httpinterface                       enable http interface
+  --transitionToAuth                    For rolling access control upgrade.
+                                        Attempt to authenticate over outgoing
+                                        connections and proceed regardless of
+                                        success. Accept incoming connections
+                                        with or without authentication.
+  --clusterAuthMode arg                 Authentication mode used for cluster
+                                        authentication. Alternatives are
+                                        (keyFile|sendKeyFile|sendX509|x509)
+  --nounixsocket                        disable listening on unix sockets
+  --unixSocketPrefix arg                alternative directory for UNIX domain
+                                        sockets (defaults to /tmp)
+  --filePermissions arg                 permissions to set on UNIX domain
+                                        socket file - 0700 by default
+  --fork                                fork server process
+  --networkMessageCompressors arg       Comma-separated list of compressors to
+                                        use for network messages
+  --auth                                run with security
+  --jsonp                               allow JSONP access via http (has
+                                        security implications)
+  --rest                                turn on simple rest api
+  --slowms arg (=100)                   value of slow for profile and console
+                                        log
+  --profile arg                         0=off 1=slow, 2=all
+  --cpu                                 periodically show cpu and iowait
+                                        utilization
+  --sysinfo                             print some diagnostic system
+                                        information
+  --noIndexBuildRetry                   don't retry any index builds that were
+                                        interrupted by shutdown
+  --noscripting                         disable scripting engine
+  --notablescan                         do not allow table scans
+
+Replication options:
+  --oplogSize arg                       size to use (in MB) for replication op
+                                        log. default is 5% of disk space (i.e.
+                                        large is good)
+
+Master/slave options (old; use replica sets instead):
+  --master                              master mode
+  --slave                               slave mode
+  --source arg                          when slave: specify master as
+                                        <server:port>
+  --only arg                            when slave: specify a single database
+                                        to replicate
+  --slavedelay arg                      specify delay (in seconds) to be used
+                                        when applying master ops to slave
+  --autoresync                          automatically resync if slave data is
+                                        stale
+
+Replica set options:
+  --replSet arg                         arg is <setname>[/<optionalseedhostlist
+                                        >]
+  --replIndexPrefetch arg               specify index prefetching behavior (if
+                                        secondary) [none|_id_only|all]
+  --enableMajorityReadConcern           enables majority readConcern
+
+Sharding options:
+  --configsvr                           declare this is a config db of a
+                                        cluster; default port 27019; default
+                                        dir /data/configdb
+  --shardsvr                            declare this is a shard db of a
+                                        cluster; default port 27018
+
+SSL options:
+  --sslOnNormalPorts                    use ssl on configured ports
+  --sslMode arg                         set the SSL operation mode
+                                        (disabled|allowSSL|preferSSL|requireSSL
+                                        )
+  --sslPEMKeyFile arg                   PEM file for ssl
+  --sslPEMKeyPassword arg               PEM file password
+  --sslClusterFile arg                  Key file for internal SSL
+                                        authentication
+  --sslClusterPassword arg              Internal authentication key file
+                                        password
+  --sslCAFile arg                       Certificate Authority file for SSL
+  --sslCRLFile arg                      Certificate Revocation List file for
+                                        SSL
+  --sslDisabledProtocols arg            Comma separated list of TLS protocols
+                                        to disable [TLS1_0,TLS1_1,TLS1_2]
+  --sslWeakCertificateValidation        allow client to connect without
+                                        presenting a certificate
+  --sslAllowConnectionsWithoutCertificates
+                                        allow client to connect without
+                                        presenting a certificate
+  --sslAllowInvalidHostnames            Allow server certificates to provide
+                                        non-matching hostnames
+  --sslAllowInvalidCertificates         allow connections to servers with
+                                        invalid certificates
+  --sslFIPSMode                         activate FIPS 140-2 mode at startup
+
+Storage options:
+  --storageEngine arg                   what storage engine to use - defaults
+                                        to wiredTiger if no data files present
+  --dbpath arg                          directory for datafiles - defaults to
+                                        /data/db
+  --directoryperdb                      each database will be stored in a
+                                        separate directory
+  --noprealloc                          disable data file preallocation - will
+                                        often hurt performance
+  --nssize arg (=16)                    .ns file size (in MB) for new databases
+  --quota                               limits each database to a certain
+                                        number of files (8 default)
+  --quotaFiles arg                      number of files allowed per db, implies
+                                        --quota
+  --smallfiles                          use a smaller default file size
+  --syncdelay arg (=60)                 seconds between disk syncs (0=never,
+                                        but not recommended)
+  --upgrade                             upgrade db if needed
+  --repair                              run repair on all dbs
+  --repairpath arg                      root directory for repair files -
+                                        defaults to dbpath
+  --journal                             enable journaling
+  --nojournal                           disable journaling (journaling is on by
+                                        default for 64 bit)
+  --journalOptions arg                  journal diagnostic options
+  --journalCommitInterval arg           how often to group/batch commit (ms)
+
+WiredTiger options:
+  --wiredTigerCacheSizeGB arg           maximum amount of memory to allocate
+                                        for cache; defaults to 1/2 of physical
+                                        RAM
+  --wiredTigerStatisticsLogDelaySecs arg (=0)
+                                        seconds to wait between each write to a
+                                        statistics file in the dbpath; 0 means
+                                        do not log statistics
+  --wiredTigerJournalCompressor arg (=snappy)
+                                        use a compressor for log records
+                                        [none|snappy|zlib]
+  --wiredTigerDirectoryForIndexes       Put indexes and data in different
+                                        directories
+  --wiredTigerCollectionBlockCompressor arg (=snappy)
+                                        block compression algorithm for
+                                        collection data [none|snappy|zlib]
+  --wiredTigerIndexPrefixCompression arg (=1)
+                                        use prefix compression on row-store
+                                        leaf pages
+
+➜  data mongod --dbpath  /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+2017-02-01T08:44:05.980+0100 I CONTROL  [initandlisten] MongoDB starting : pid=43960 port=27017 dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:44:05.981+0100 I CONTROL  [initandlisten] options: { storage: { dbPath: "/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/" } }
+2017-02-01T08:44:05.982+0100 E NETWORK  [initandlisten] listen(): bind() failed Address already in use for socket: 0.0.0.0:27017
+2017-02-01T08:44:05.982+0100 E NETWORK  [initandlisten]   addr already in use
+2017-02-01T08:44:05.982+0100 E NETWORK  [initandlisten] Failed to set up sockets during startup.
+2017-02-01T08:44:05.982+0100 E STORAGE  [initandlisten] Failed to set up listener: InternalError: Failed to set up sockets
+2017-02-01T08:44:05.982+0100 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-02-01T08:44:05.982+0100 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-02-01T08:44:05.982+0100 I CONTROL  [initandlisten] now exiting
+2017-02-01T08:44:05.982+0100 I CONTROL  [initandlisten] shutting down with code:48
+➜  data /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+➜  data mongod --dbpath  /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+2017-02-01T08:47:29.526+0100 I CONTROL  [initandlisten] MongoDB starting : pid=44033 port=27017 dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:47:29.527+0100 I CONTROL  [initandlisten] options: { storage: { dbPath: "/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/" } }
+2017-02-01T08:47:29.527+0100 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7680M,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-02-01T08:47:29.900+0100 I CONTROL  [initandlisten]
+2017-02-01T08:47:29.900+0100 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-02-01T08:47:29.900+0100 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-02-01T08:47:29.900+0100 I CONTROL  [initandlisten]
+2017-02-01T08:47:30.058+0100 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/diagnostic.data'
+2017-02-01T08:47:30.160+0100 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-02-01T08:47:30.160+0100 I INDEX    [initandlisten]      building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-02-01T08:47:30.171+0100 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-02-01T08:47:30.172+0100 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-02-01T08:47:30.172+0100 I NETWORK  [thread1] waiting for connections on port 27017
+^C2017-02-01T08:50:23.805+0100 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-02-01T08:50:23.805+0100 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-02-01T08:50:23.805+0100 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-02-01T08:50:23.806+0100 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-02-01T08:50:23.806+0100 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-02-01T08:50:23.806+0100 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-02-01T08:50:23.807+0100 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-02-01T08:50:23.809+0100 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-02-01T08:50:23.953+0100 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-02-01T08:50:23.953+0100 I CONTROL  [signalProcessingThread] now exiting
+2017-02-01T08:50:23.953+0100 I CONTROL  [signalProcessingThread] shutting down with code:0
+➜  data mongod --port 27017  --dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/
+2017-02-01T08:50:56.622+0100 I CONTROL  [initandlisten] MongoDB starting : pid=44082 port=27017 dbpath=/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ 64-bit host=GoDaddys-MacBook-Pro.local
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] db version v3.4.1
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] git version: 5e103c4f5583e2566a45d740225dc250baacfbd7
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2k  26 Jan 2017
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] allocator: system
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] modules: none
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] build environment:
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten]     distarch: x86_64
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-02-01T08:50:56.623+0100 I CONTROL  [initandlisten] options: { net: { port: 27017 }, storage: { dbPath: "/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/" } }
+2017-02-01T08:50:56.624+0100 I -        [initandlisten] Detected data files in /Users/godaddyuser/Desktop/random/url_shortener_microservice/data/ created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-02-01T08:50:56.624+0100 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=7680M,session_max=20000,eviction=(threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),
+2017-02-01T08:50:57.269+0100 I CONTROL  [initandlisten]
+2017-02-01T08:50:57.269+0100 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-02-01T08:50:57.269+0100 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-02-01T08:50:57.269+0100 I CONTROL  [initandlisten]
+2017-02-01T08:50:57.271+0100 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Users/godaddyuser/Desktop/random/url_shortener_microservice/data/diagnostic.data'
+2017-02-01T08:50:57.271+0100 I NETWORK  [thread1] waiting for connections on port 27017
+show databases
+2017-02-01T08:53:13.243+0100 I NETWORK  [thread1] connection accepted from 127.0.0.1:51402 #1 (1 connection now open)
+2017-02-01T08:53:13.244+0100 I NETWORK  [conn1] received client metadata from 127.0.0.1:51402 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.1" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "15.6.0" } }
+^C2017-02-01T08:59:01.977+0100 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-02-01T08:59:01.977+0100 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-02-01T08:59:01.977+0100 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2017-02-01T08:59:01.977+0100 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-02-01T08:59:01.977+0100 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-02-01T08:59:01.977+0100 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-02-01T08:59:01.977+0100 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-02-01T08:59:01.979+0100 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-02-01T08:59:02.207+0100 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-02-01T08:59:02.208+0100 I CONTROL  [signalProcessingThread] now exiting
+2017-02-01T08:59:02.208+0100 I CONTROL  [signalProcessingThread] shutting down with code:0
+➜  data mongo ds139879.mlab.com:39879/short-adresses -u aleksa -p Kikiriki1
+MongoDB shell version v3.4.1
+connecting to: mongodb://ds139879.mlab.com:39879/short-adresses
+2017-02-01T09:00:57.788+0100 W NETWORK  [main] Failed to connect to 54.196.85.114:39879 after 5000ms milliseconds, giving up.
+2017-02-01T09:00:57.790+0100 E QUERY    [main] Error: couldn't connect to server ds139879.mlab.com:39879, connection attempt failed :
+connect@src/mongo/shell/mongo.js:234:13
+@(connect):1:6
+exception: connect failed
+➜  data mongo ds139879.mlab.com:39879/short-adresses -u aleksa -p Kikiriki1
+MongoDB shell version v3.4.1
+connecting to: mongodb://ds139879.mlab.com:39879/short-adresses
+2017-02-01T09:02:41.210+0100 W NETWORK  [main] Failed to connect to 54.196.85.114:39879 after 5000ms milliseconds, giving up.
+2017-02-01T09:02:41.210+0100 E QUERY    [main] Error: couldn't connect to server ds139879.mlab.com:39879, connection attempt failed :
+connect@src/mongo/shell/mongo.js:234:13
+@(connect):1:6
+exception: connect failed
+➜  data ping ds139879.mlab.com:39879/short-adresses
+ping: cannot resolve ds139879.mlab.com:39879/short-adresses: Unknown host
+➜  data mongo ds139879.mlab.com:39879/short-adresses -u admin -p admin
+MongoDB shell version v3.4.1
+connecting to: mongodb://ds139879.mlab.com:39879/short-adresses
+2017-02-01T09:13:51.169+0100 W NETWORK  [main] Failed to connect to 54.196.85.114:39879 after 5000ms milliseconds, giving up.
+2017-02-01T09:13:51.170+0100 E QUERY    [main] Error: couldn't connect to server ds139879.mlab.com:39879, connection attempt failed :
+connect@src/mongo/shell/mongo.js:234:13
+@(connect):1:6
+exception: connect failed
+➜  data mongo ds139879.mlab.com:39879/short-adresses
+MongoDB shell version v3.4.1
+connecting to: mongodb://ds139879.mlab.com:39879/short-adresses
+2017-02-01T09:14:00.492+0100 W NETWORK  [main] Failed to connect to 54.196.85.114:39879 after 5000ms milliseconds, giving up.
+2017-02-01T09:14:00.493+0100 E QUERY    [main] Error: couldn't connect to server ds139879.mlab.com:39879, connection attempt failed :
+connect@src/mongo/shell/mongo.js:234:13
+@(connect):1:6
+exception: connect failed
+➜  data ping mongodb://ds139879.mlab.com:39879/short-adresses
+ping: cannot resolve mongodb://ds139879.mlab.com:39879/short-adresses: Unknown host
